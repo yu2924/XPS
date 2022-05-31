@@ -1,0 +1,19 @@
+(footprint "ThermalViaPad-D1.0" (version 20211014) (generator pcbnew)
+  (layer "F.Cu")
+  (tedit 0)
+  (attr through_hole)
+  (fp_text reference "REF**" (at 0 -0.5 unlocked) (layer "F.SilkS") hide
+    (effects (font (size 1 1) (thickness 0.15)))
+    (tstamp 6d293e76-b473-4b35-b2cf-12c4e8c596bb)
+  )
+  (fp_text value "ThermalViaPad-D1.0" (at 0 1 unlocked) (layer "F.Fab") hide
+    (effects (font (size 1 1) (thickness 0.15)))
+    (tstamp 45724ebf-b756-4848-9003-54781c32b9c7)
+  )
+  (fp_text user "${REFERENCE}" (at 0 2.5 unlocked) (layer "F.Fab") hide
+    (effects (font (size 1 1) (thickness 0.15)))
+    (tstamp 21d4bf72-eb14-493d-94e3-c4cdff234138)
+  )
+  (pad "1" thru_hole circle (at 0 0) (size 1 1) (drill 0.6) (layers *.Cu *.Mask)
+    (zone_connect 2) (tstamp 90a74f5e-7380-4ff0-bb5e-d9d5841f174b))
+)

@@ -1,0 +1,5 @@
+(version 1)
+
+(rule HV_HV
+   (constraint clearance (min "2.3mm"))
+   (condition "A.NetClass == 'HVA' && B.NetClass == 'HVB'"))

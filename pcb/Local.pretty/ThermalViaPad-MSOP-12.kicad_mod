@@ -1,0 +1,23 @@
+(footprint "ThermalViaPad-MSOP-12" (version 20211014) (generator pcbnew)
+  (layer "F.Cu")
+  (tedit 6219F0F1)
+  (attr smd)
+  (fp_text reference "REF**" (at 0 -2 unlocked) (layer "F.SilkS") hide
+    (effects (font (size 1 1) (thickness 0.15)))
+    (tstamp 4c8eb964-bdf4-44de-90e9-e2ab82dd5313)
+  )
+  (fp_text value "ThermalViaPad-MSOP-12" (at 0 3 unlocked) (layer "F.Fab") hide
+    (effects (font (size 1 1) (thickness 0.15)))
+    (tstamp aa14c3bd-4acc-4908-9d28-228585a22a9d)
+  )
+  (fp_text user "${REFERENCE}" (at 0 2 unlocked) (layer "F.Fab") hide
+    (effects (font (size 1 1) (thickness 0.15)))
+    (tstamp 9bb20359-0f8b-45bc-9d38-6626ed3a939d)
+  )
+  (pad "1" smd rect (at 0 0) (size 1.65 2.85) (layers "B.Cu" "B.Paste" "B.Mask")
+    (zone_connect 2) (tstamp 5c78b373-2168-4572-b43a-f4647d8651f2))
+  (pad "1" smd rect (at 0 0) (size 1.65 2.85) (layers "F.Cu" "F.Paste" "F.Mask")
+    (zone_connect 2) (tstamp 97fe9c60-586f-4895-8504-4d3729f5f81a))
+  (pad "1" thru_hole oval (at 0 0) (size 1.2 2) (drill oval 0.8 1.6) (layers *.Cu *.Mask)
+    (zone_connect 2) (tstamp b447dbb1-d38e-4a15-93cb-12c25382ea53))
+)

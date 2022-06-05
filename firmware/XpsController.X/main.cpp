@@ -228,7 +228,7 @@ struct Debouncer
 struct Controller
 {
 	static const int WAIT_TGC = 10;
-	static const int WAIT_XPC = 50;
+	static const int WAIT_XPC = 200;
 	AcCoupler acCoupler;
 	PeakDetector peakDetectorP;
 	PeakDetector peakDetectorN;
@@ -239,7 +239,7 @@ struct Controller
 	bool tgc, xpc, hvc;
 	Controller()
 		: peakDetectorP(32000, 385) // threshold=-0.21dBFS, holdtime=20.02ms@fs=19.23kHz
-		, peakDetectorN(1000, 1924) // threshold=-30.3dBFS, holdtime=100.1ms@fs=19.23kHz
+		, peakDetectorN(128, 1924) // threshold=-48.2dBFS, holdtime=100.1ms@fs=19.23kHz
 		, loopCount(0)
 		, xpmWaitCount(0)
 		, tgc(false)

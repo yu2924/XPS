@@ -107,37 +107,45 @@ AVRマイコンのATtiny44Aでピークインジケータとスイッチ入力�
 
 ## 4. 筐体と組み立て
 
-筐体はアルミの箱にアルミパネルを組み合わせた二重パネル構造で、ジャックやポテンショメータの固定ナットを隠蔽してすっきりさせます (図4-1)。見栄えは向上しますが[^6]、コストも上がります。製作例ではタカチ社のカスタム加工サービスを利用し、シャーシにはMBFシリーズ、アルミパネルにはNPシリーズを組み合わせました。インクジェット印刷が利用できますが、CMYK色データの用意が必要です。[(Appendix 3)](#appendix-3-フリーソフトでcmykデータを出力する手順)
+筐体はアルミの箱にアルミパネルを組み合わせた二重パネル構造で、ジャックやポテンショメータの固定ナットを隠蔽してすっきりさせます (図4-1)。見栄えは向上しますが[^6]、コストも上がります。製作例ではタカチ社のカスタム加工サービスを利用し、シャーシにはMBFシリーズ、アルミパネルにはNPシリーズを組み合わせました。インクジェット印刷が利用できますが、CMYK色データの用意が必要です[(Appendix 3)](#appendix-3-フリーソフトでcmykデータを出力する手順)。  
 スペーサやスイッチキャップ、治具などの作成には3Dプリンタを活用します。  
-<img src="media/3d-front.png" width="640"> **図4-1. 二重パネル構造**  
+<img src="media/3d-front.png" width="640">  
+**図4-1. 二重パネル構造**  
 
 [^6]: 個人の主観による
 
-<img src="media/pcb-assembly.svg" width="1024"> **図4-2. 基板の組み込み**  
+<img src="media/pcb-assembly.svg" width="1024">  
+**図4-2. 基板の組み込み**  
 
 主電源レギュレータ基板 (XPS:PS-DC) はアルミブロックを介してシャーシと熱結合します(図4-3, 4-4)。  
-<img src="media/heatsink-struct.jpg" width="360"> <img src="media/heatsink-struct.svg" width="283"> **図4-3, 4-4. 主電源のヒートシンク構造**  
+<img src="media/heatsink-struct.jpg" width="360"> <img src="media/heatsink-struct.svg" width="283">  
+**図4-3, 4-4. 主電源のヒートシンク構造**  
 
 バッファアンプ基板 (XPS:Channel) と 出力ジャック基板 (XPS:OutputConnector) では、ジャックやポテンショメータをハンダで固定する際にプリントしたスペーサを合わせて、穴位置のずれを防ぎます (図4-5)。  
-<img src="media/spacer-using-as-jig.jpg" width="320"> **図4-5. スペーサを固定治具として使用**  
+<img src="media/spacer-using-as-jig.jpg" width="320">  
+**図4-5. スペーサを固定治具として使用**  
 
 ジャックやポテンショメータはシャーシマウントとし、ケーブルの挿抜やツマミ操作がハンダ部分に機械的なストレスを与えにくい構造です (図4-6)。  
-<img src="media/channel-struct.svg" width="454"> **図4-6. ジャックやポテンショメータを直接シャーシに固定**  
+<img src="media/channel-struct.svg" width="454">  
+**図4-6. ジャックやポテンショメータを直接シャーシに固定**  
 
 給電回路基板 (XPS:Channel:XPower) とコントローラ基板 (XPS:Channel:Controller) は、バッファアンプ基板 (XPS:Channel)の子基板としてピンヘッダ・ソケットを介して接続します。(図4-7)  
-<img src="media/daughter-boards-struct.svg" width="397"> **図4-7. 子基板の装着**  
+<img src="media/daughter-boards-struct.svg" width="397">  
+**図4-7. 子基板の装着**  
 
 操作パネル基板 (XPS:Channel:ControlPanel) の組み立てには、治具をプリントしてLEDとスイッチの位置決めに使います。(図4-8, 4-9)  
 コントローラ基板 (XPS:Channel:Controller) とはフラットケーブルで接続します。  
-<img src="media/using-jig-back.jpg" width="320"> <img src="media/using-jig-front.jpg" width="320"> **図4-8, 4-9. 治具を使用した位置決め**  
+<img src="media/using-jig-back.jpg" width="320"> <img src="media/using-jig-front.jpg" width="320">  
+**図4-8, 4-9. 治具を使用した位置決め**  
 
 フロントパネルはM3ボルトでシャーシに固定します。ハーフラックトレイに乗せるため、シャーシの底面を2mmほど浮かすようになっています (図4-10)。  
-<img src="media/frontpanel-struct.svg" width="283"> **図4-10. フロントパネル構造**  
+<img src="media/frontpanel-struct.svg" width="283">  
+**図4-10. フロントパネル構造**  
 
 **組み立て後の調節手順**
 1. 主電源レギュレータ基板 (XPS:PS-DC) の出力電圧を調節する。あらかじめRV1とRV2を左手最小位置に回し切っておき、主電源をONにする。最初にRV1で11Vレールを調節し、次にRV2で22Vレールを調節する。11Vレールは9V給電のために最低でも11Vあった方が良いが、22Vレールは実際には21V程度あれば十分である。
 2. ファームウェアを書き込む。主電源を入れた状態でコントローラ基板 (XPS:Channel:Controller) のISPヘッダにAVRライタを接続し、書き込む。
-3. 給電回路基板 (XPS:Channel:XPower) の出力電圧を調節する。あらかじめRV1とRV2を左手最小位置に回し切っておき、給電回路をONにする。最初にRV1で9Vを調節し、次にRV2で18Vを調節する。厳密である必要は無く、長いケーブルを介して給電することを考えると少し高めに設定しておいても良いのではないかと思う。
+3. 給電回路基板 (XPS:Channel:XPower) の出力電圧を調節する。あらかじめRV1とRV2を左手最小位置に回し切っておき、給電回路をONにする。最初にRV1で9Vを調節し、次にRV2で18Vを調節する。厳密である必要は無く、長いケーブルを介して給電することを考えると少し高めに設定しておいても良いのではないかと思う。  
 :warning:18V側の上がり過ぎに注意する。給電回路に採用した**LT3066の最大定格出力は20Vである**ため、過渡的なオーバーシュートを含め20Vを超えてはいけない。
 4. ピークインジケータの感度を調節する。バッファアンプ基板 (XPS:Channel) にオーディオ信号を入力し、テストポイントTP3において±7Vpeakにスイングしたときにインジケータの赤ランプが点灯するようにコントローラ基板 (XPS:Channel:Controller) のRV1を調節する。
 
@@ -146,11 +154,14 @@ AVRマイコンのATtiny44Aでピークインジケータとスイッチ入力�
 ## Appendix 1. 電気楽器の外側から給電する仕組み
 
 アクティブサーキットを内蔵した電気ギターなどの電気楽器によく見られる仕組みとして、出力のTRSジャックにTSプラグを差し込むことでsleeve端子とring端子を短絡させ、バッテリー接続をONするものがあります (図A1-1)。  
-<img src="media/ps-trs-1.svg" width="440"> **図A1-1. TRSジャックを使ったバッテリースイッチ**  
+<img src="media/ps-trs-1.svg" width="440">  
+**図A1-1. TRSジャックを使ったバッテリースイッチ**  
 
 このような仕組みにおいては、バッテリーの代わりに短絡クリップ (図A1-2) を繋いでおけば、TRSケーブルのring端子を経由してアクティブサーキットに給電することができます (図A1-3)。楽器の改造は必要ありません。当デザインではこの方法を採用しています。  
-<img src="media/battery-shortplug.jpg" width="240"> **図A1-2. バッテリースナップを加工して作成した短絡クリップの例**  
-<img src="media/ps-trs-2.svg" width="440"> **図A1-3. TRSケーブルを使った外部からの給電**  
+<img src="media/battery-shortplug.jpg" width="240">  
+**図A1-2. バッテリースナップを加工して作成した短絡クリップの例**  
+<img src="media/ps-trs-2.svg" width="440">  
+**図A1-3. TRSケーブルを使った外部からの給電**  
 
 >市販の製品の中にも、同様な方法でアクティブサーキットに給電できるものがありました。(要確認)
 >* [EMG Power Supplies](https://www.emgpickups.com/parts/power-supplies.html)
@@ -158,15 +169,21 @@ AVRマイコンのATtiny44Aでピークインジケータとスイッチ入力�
 >* Steinberger A-100 Phantom Power Supply
 
 一方、絶縁された連動スイッチでバッテリー接続をONするタイプの電気楽器も存在します (図A1-4)。このような仕組みでは、ジャックを介して外部から給電することは出来ません。  
-<img src="media/ps-trs-3.svg" width="440"> **図A1-4. 絶縁された連動スイッチによるバッテリースイッチ**  
+<img src="media/ps-trs-3.svg" width="440">  
+**図A1-4. 絶縁された連動スイッチによるバッテリースイッチ**  
 
 ## Appendix 2. レギュレータの損失のシミュレーション
 
 レギュレータの放熱方法について検討するため、パワー半導体における損失をシミュレーションしてみます。ここではLTspiceを利用してみました。
 トランスの変動率仕様あるいは実測値からおよその巻線抵抗を割り出して設定します。回路は実際のものと全く同じである必要はありません。入出力電位差と負荷電流を揃えれば損失の値はおのずと等しくなります。ここで負荷を0～300mAまでスイープさせてみます。(図A2-1)  
-<img src="media/ple-sch.png" width="640"> **図A2-1. 損失シミュレーション回路**  
-<img src="media/ple-100v.png" width="640"> **図A2-2. 損失シミュレーション (100V AC)**  
-<img src="media/ple-115v.png" width="640"> **図A2-3. 損失シミュレーション (115V AC)**  
+<img src="media/ple-sch.png" width="640">  
+**図A2-1. 損失シミュレーション回路**  
+
+<img src="media/ple-100v.png" width="640">  
+**図A2-2. 損失シミュレーション (100V AC)**  
+
+<img src="media/ple-115v.png" width="640">  
+**図A2-3. 損失シミュレーション (115V AC)**  
 
 2つのレギュレータICにおける最大損失はおよそ以下の表のように読み取れます。
 

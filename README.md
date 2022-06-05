@@ -114,7 +114,8 @@ AVRマイコンのATtiny44Aでピークインジケータとスイッチ入力�
 
 [^6]: 個人の主観による
 
-<img src="media/pcb-assembly.svg" width="1024">  
+<img src="media/pcb-assembly.svg" width="1024">
+
 **図4-2. 基板の組み込み**  
 
 主電源レギュレータ基板 (XPS:PS-DC) はアルミブロックを介してシャーシと熱結合します(図4-3, 4-4)。  
@@ -179,10 +180,12 @@ AVRマイコンのATtiny44Aでピークインジケータとスイッチ入力�
 <img src="media/ple-sch.png" width="640">  
 **図A2-1. 損失シミュレーション回路**  
 
-<img src="media/ple-100v.png" width="640">  
+<img src="media/ple-100v.png" width="640">
+
 **図A2-2. 損失シミュレーション (100V AC)**  
 
-<img src="media/ple-115v.png" width="640">  
+<img src="media/ple-115v.png" width="640">
+
 **図A2-3. 損失シミュレーション (115V AC)**  
 
 2つのレギュレータICにおける最大損失はおよそ以下の表のように読み取れます。

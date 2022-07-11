@@ -288,13 +288,15 @@ struct Controller
 		// startup blinking
 		for(int i = 0; i < 4; ++ i)
 		{
-			setbit(PORT_PLD, BIT_PLD, 1);
-			setbit(PORT_NLD, BIT_NLD, 1);
-			_delay_ms(500);
 			setbit(PORT_PLD, BIT_PLD, 0);
+			setbit(PORT_NLD, BIT_NLD, 1);
+			_delay_ms(250);
+			setbit(PORT_PLD, BIT_PLD, 1);
 			setbit(PORT_NLD, BIT_NLD, 0);
-			_delay_ms(500);
+			_delay_ms(250);
 		}
+		setbit(PORT_PLD, BIT_PLD, 0);
+		setbit(PORT_NLD, BIT_NLD, 0);
 		// --------------------
 		// initialization
 		tgsDebouncer.reset(PIN_TGS & (1<<BIT_TGS)); psmDebouncer.reset(ACSR & (1<<ACO)); tgc = tgsDebouncer.isLow() && psmDebouncer.isLow();
